@@ -14,6 +14,7 @@ var host = "http://localhost:8080/api/car";
     xhttp.onreadystatechange = function() {
          if (this.readyState == 4 && this.status == 200) {
              alert("The car has been successfully created");
+             document.getElementById("car_form").reset();
          }
     };
 

@@ -13,8 +13,9 @@ import io.quarkus.hibernate.orm.panache.PanacheRepository;
 public class CarRepository implements PanacheRepository<Car> {
 
     @Transactional
-    public void createCar(Car car) {
+    public Long createCar(Car car) {
         car.persist();
+        return car.id;
     }
 
     public List<Car> findByName(String name) {
