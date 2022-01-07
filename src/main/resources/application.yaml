@@ -1,0 +1,19 @@
+quarkus:
+  banner:
+    enabled: false
+  hibernate-orm:
+    database:
+      generation: validate
+    log:
+      sql: false
+  datasource:
+    db-kind: h2
+    username: sa
+    password: sa
+    jdbc:
+      url: jdbc:h2:./storage;MODE=MYSQL;AUTO_RECONNECT=TRUE;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1;IGNORE_UNKNOWN_SETTINGS=TRUE;ACCESS_MODE_DATA=rws
+  log:
+    file:
+      enable: false
+    console:
+      enable: true
