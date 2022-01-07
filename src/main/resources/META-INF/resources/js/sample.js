@@ -1,16 +1,25 @@
 var host = "http://localhost:8080/api/car";
-var data = '{"manufacturer":"Volkswagen","model":"SportCombi","name":"Golf","color":"white","productionYear":"2019","fuel":"Petrol"}';
 
-    function carCreateAction() {
+    function carCreationAction() {
+
+    var obj = new Object();
+    obj.name = document.getElementById("car_name").value;
+    obj.model = document.getElementById("car_model").value;
+    obj.manufacturer = document.getElementById("car_manufacturer").value;
+    obj.year = document.getElementById("car_year").value;
+    obj.color = document.getElementById("car_color").value;
+    obj.fuel = document.getElementById("car_fuel").value;
+
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
          if (this.readyState == 4 && this.status == 200) {
-             alert(this.responseText);
+             alert("The car has been successfully created");
          }
     };
+
     xhttp.open("POST", host, true);
     xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send(data);
+    xhttp.send(JSON.stringify(obj));
 }
 
     function carListAction() {
