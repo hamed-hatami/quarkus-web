@@ -7,9 +7,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -28,10 +30,19 @@ public class CarResource {
     }
 
     @POST
-    public Response createCar(Car car) {
+    public Response createCar(final Car car) {
         return Response
                 .ok(carRepository
                         .createCar(car))
+                .build();
+    }
+
+    @DELETE
+    @Path("{id}")
+    public Response createCar(@PathParam("id") final String id) {
+        String msg = carRepository.CarDelete(id);
+        return Response
+                .ok(msg)
                 .build();
     }
 }
