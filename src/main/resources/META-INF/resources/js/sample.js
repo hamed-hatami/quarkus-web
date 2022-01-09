@@ -61,7 +61,7 @@ var host = "http://localhost:8080/api/car";
                             var link = document.createTextNode('delete');
                             a.id = list[i][cols[1]];
                             a.appendChild(link);
-                            a.href = '#';//host + '/' + list[i][cols[1]];
+                            a.href = '#';
                             a.onclick = function doDelete() {
                                             carDeletionAction();
                                             return false;
@@ -93,7 +93,7 @@ function carDeletionAction(e) {
 var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
          if (this.readyState == 4 && this.status == 200) {
-             alert("The record has been successfully deleted");
+             alert(this.responseText);
              location.reload();
          }
 };
@@ -101,10 +101,4 @@ xhttp.open("DELETE", host + '/' + target.id, true);
 xhttp.setRequestHeader("Content-type", "application/json");
 xhttp.send();
 }
-
-document.addEventListener('click', function(e) {
-    e = e || window.event;
-    var target = e.target || e.srcElement,
-        text = target.textContent || target.innerText;
-}, false);
 
