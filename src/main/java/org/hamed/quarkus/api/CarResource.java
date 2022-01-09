@@ -40,7 +40,6 @@ public class CarResource {
     @DELETE
     @Path("{id}")
     public Response createCar(@PathParam("id") final String id) {
-        System.out.println(">>>>>>>>>>>>>>>" + id);
         String msg = carRepository.CarDelete(id);
         return Response
                 .ok(msg)
