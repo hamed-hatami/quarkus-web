@@ -29,6 +29,7 @@ var host = "http://localhost:8080/api/car";
          if (this.readyState == 4 && this.status == 200) {
             var list = JSON.parse(this.responseText);
             var cols = [];
+            cols.push("operation");
             for (var i = 0; i < list.length; i++) {
                             for (var k in list[i]) {
                                 if (cols.indexOf(k) === -1) {
@@ -48,19 +49,21 @@ var host = "http://localhost:8080/api/car";
                             // Create the table header th element
                             var theader = document.createElement("th");
                             theader.innerHTML = cols[i];
-
                             // Append columnName to the table row
                             tr.appendChild(theader);
                         }
-
                         // Adding the data to the table
                         for (var i = 0; i < list.length; i++) {
-
                             // Create a new row
                             trow = table.insertRow(-1);
-                            for (var j = 0; j < cols.length; j++) {
+                            var a = document.createElement('a');
+                            var link = document.createTextNode('delete');
+                            a.appendChild(link);
+                            a.href = host + '/' + list[i][cols[1]];
+                            a.setAttribute('data-method', 'delete');
+                            trow.appendChild(a);
+                            for (var j = 1; j < cols.length; j++) {
                                 var cell = trow.insertCell(-1);
-
                                 // Inserting the cell at particular place
                                 cell.innerHTML = list[i][cols[j]];
                             }

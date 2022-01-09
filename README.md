@@ -35,5 +35,5 @@ curl -i -X GET http://localhost:8080/api/car -H "Content-Type: application/json"
 
 curl -i -X POST http://localhost:8080/api/car -H "Content-Type: application/json" -d '{"manufacturer":"Volkswagen","model":"SportCombi","name":"Golf","Grey":"white","productionYear":"2020","fuel":"GTE"}'
 
-curl -i -X DELETE http://localhost:8080/api/car/1 -H "Content-Type: application/json"
+curl -i -X DELETE http://localhost:8080/api/car/13 -H "Content-Type: application/json"
 ```

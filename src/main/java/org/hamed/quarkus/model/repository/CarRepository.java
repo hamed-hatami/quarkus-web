@@ -28,8 +28,9 @@ public class CarRepository implements PanacheRepository<Car> {
                 .list();
     }
 
+    @Transactional
     public String CarDelete(String id) {
-        Car car = find("id", id)
+        Car car = find("id", Long.parseLong(id))
                 .firstResult();
         delete(car);
         return "The Car has been successfully deleted";
