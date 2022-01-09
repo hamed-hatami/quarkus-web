@@ -53,14 +53,19 @@ var host = "http://localhost:8080/api/car";
                             tr.appendChild(theader);
                         }
                         // Adding the data to the table
+
                         for (var i = 0; i < list.length; i++) {
                             // Create a new row
                             trow = table.insertRow(-1);
                             var a = document.createElement('a');
                             var link = document.createTextNode('delete');
+                            a.id = list[i][cols[1]];
                             a.appendChild(link);
-                            a.href = host + '/' + list[i][cols[1]];
-                            a.setAttribute('data-method', 'delete');
+                            a.href = '#';//host + '/' + list[i][cols[1]];
+                            a.onclick = function doDelete() {
+                                            carDeletionAction();
+                                            return false;
+                                        };
                             trow.appendChild(a);
                             for (var j = 1; j < cols.length; j++) {
                                 var cell = trow.insertCell(-1);
@@ -79,3 +84,27 @@ var host = "http://localhost:8080/api/car";
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send();
 }
+
+function carDeletionAction(e) {
+    e = e || window.event;
+    var target = e.target || e.srcElement,
+        text = target.textContent || target.innerText;
+
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+             alert("The record has been successfully deleted");
+             location.reload();
+         }
+};
+xhttp.open("DELETE", host + '/' + target.id, true);
+xhttp.setRequestHeader("Content-type", "application/json");
+xhttp.send();
+}
+
+document.addEventListener('click', function(e) {
+    e = e || window.event;
+    var target = e.target || e.srcElement,
+        text = target.textContent || target.innerText;
+}, false);
+
