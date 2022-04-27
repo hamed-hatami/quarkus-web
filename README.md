@@ -5,7 +5,7 @@ It's to create a preliminary CRUD Web Application with Quarkus by using H2 as DB
 
 Used Technology Stack
 
-1) Quarkus 2.8.0.Final
+1) Quarkus 2.8.2.Final
 2) Resteasy (MicroProfile implementation)
 3) JPA Panache (Hibernate)
 4) HTML5 , Javascript
